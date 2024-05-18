@@ -23,8 +23,9 @@ import { Input } from "@/components/ui/input"
 
 export function ChatUI() {
   return (
-    <div className="flex h-screen">
-      <div className="bg-gray-100 dark:bg-gray-800 w-64 border-r border-gray-200 dark:border-gray-700 p-4 overflow-auto">
+    <div className="flex h-full">
+       
+      <div className="hidden bg-gray-100 dark:bg-gray-800 w-64 border-r border-gray-200 dark:border-gray-700 p-4 overflow-auto">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-medium text-gray-900 dark:text-gray-50">Recent Chats</h2>
           <Button size="icon" variant="ghost">
@@ -80,14 +81,9 @@ export function ChatUI() {
         <header className="flex items-center justify-between bg-gray-900 px-4 py-3 text-white shadow">
           <div className="flex items-center gap-2">
             <BotIcon className="h-6 w-6" />
-            <h1 className="text-lg font-medium">AI Learning Assistant</h1>
+            <h1 className="text-lg font-medium">AI Tutor</h1>
           </div>
-          <div>
-            <Avatar className="h-8 w-8">
-              <AvatarImage alt="User Avatar" src="/placeholder-avatar.jpg" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-          </div>
+
         </header>
         <main className="flex-1 overflow-auto p-4">
           <div className="space-y-4">
@@ -126,11 +122,57 @@ export function ChatUI() {
                 </p>
               </div>
             </div>
+            <div className="flex justify-start">
+              <div className="max-w-[75%] rounded-lg rounded-bl-none bg-gray-100 p-3 text-gray-900 dark:bg-gray-800 dark:text-gray-50">
+                <p>
+                  Absolutely! Machine learning is a field of artificial intelligence that enables computers to learn and
+                  improve from experience without being explicitly programmed. The key concepts include:
+                </p>
+                <ul className="mt-2 list-disc pl-5">
+                  <li>Supervised learning</li>
+                  <li>Unsupervised learning</li>
+                  <li>Neural networks</li>
+                  <li>Regression</li>
+                  <li>Classification</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div className="max-w-[75%] rounded-lg rounded-br-none bg-blue-500 p-3 text-white">
+                <p>
+                  That's really helpful, thank you! Can you give me a bit more detail on supervised and unsupervised
+                  learning?
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-start">
+              <div className="max-w-[75%] rounded-lg rounded-bl-none bg-gray-100 p-3 text-gray-900 dark:bg-gray-800 dark:text-gray-50">
+                <p>
+                  Absolutely! Machine learning is a field of artificial intelligence that enables computers to learn and
+                  improve from experience without being explicitly programmed. The key concepts include:
+                </p>
+                <ul className="mt-2 list-disc pl-5">
+                  <li>Supervised learning</li>
+                  <li>Unsupervised learning</li>
+                  <li>Neural networks</li>
+                  <li>Regression</li>
+                  <li>Classification</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div className="max-w-[75%] rounded-lg rounded-br-none bg-blue-500 p-3 text-white">
+                <p>
+                  That's really helpful, thank you! Can you give me a bit more detail on supervised and unsupervised
+                  learning?
+                </p>
+              </div>
+            </div>
           </div>
         </main>
         <div className="flex items-center bg-gray-100 px-4 py-3 dark:bg-gray-800">
           <Input
-            className="flex-1 rounded-md border-none bg-transparent py-2 pr-2 text-gray-900 placeholder:text-gray-500 focus:outline-none dark:text-gray-50 dark:placeholder:text-gray-400"
+            className="flex-1 rounded-md border-2 border-solid bg-transparent py-2 pr-2 text-gray-900 placeholder:text-gray-500 focus:outline-none dark:text-gray-50 dark:placeholder:text-gray-400"
             placeholder="Type your message..."
             type="text"
           />
@@ -207,4 +249,24 @@ function SendIcon(props:any) {
       <path d="M22 2 11 13" />
     </svg>
   )
+}
+
+function ArrowIcon(props:any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="12" y1="19" x2="12" y2="5" />
+      <polyline points="5 12 12 5 19 12" />
+    </svg>
+  );
 }

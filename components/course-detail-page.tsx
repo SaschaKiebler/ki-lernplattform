@@ -33,64 +33,13 @@ export function CourseDetailPage() {
           <BookIcon className="w-6 h-6" />
           <span>Web Development Course</span>
         </Link>
-        <Link className="text-gray-400 hover:text-white" href="#">
+        <Link className="text-gray-400 hover:text-white" href="/courses">
           <XIcon className="w-6 h-6" />
           <span className="sr-only">Close</span>
         </Link>
       </header>
       <div className="flex flex-1">
-        <div className="bg-gray-100 dark:bg-gray-800 w-64 border-r border-gray-200 dark:border-gray-700 p-6 sticky top-0 h-screen overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-4">All Courses</h2>
-          <nav>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium"
-                  href="#"
-                >
-                  <BookIcon className="w-5 h-5" />
-                  <span>Introduction to Web Development</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium"
-                  href="#"
-                >
-                  <BookIcon className="w-5 h-5" />
-                  <span>Advanced CSS Techniques</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium"
-                  href="#"
-                >
-                  <BookIcon className="w-5 h-5" />
-                  <span>Mastering JavaScript</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium"
-                  href="#"
-                >
-                  <BookIcon className="w-5 h-5" />
-                  <span>Responsive Web Design</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 font-medium"
-                  href="#"
-                >
-                  <BookIcon className="w-5 h-5" />
-                  <span>React Fundamentals</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        
         <div className="flex-1 p-6">
           <div className="max-w-6xl mx-auto px-4 py-12 md:py-16 lg:py-20">
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -149,6 +98,7 @@ export function CourseDetailPage() {
                     </div>
                     <ul className="space-y-3">
                       <li>
+                        <Link href="/quiz/2">
                         <div className="flex items-center justify-between">
                           <div>
                             <h4 className="font-medium">HTML Quiz</h4>
@@ -158,6 +108,7 @@ export function CourseDetailPage() {
                           </div>
                           <MailQuestionIcon className="w-5 h-5 text-gray-900 dark:text-gray-50" />
                         </div>
+                        </Link>
                       </li>
                       <li>
                         <div className="flex items-center justify-between">

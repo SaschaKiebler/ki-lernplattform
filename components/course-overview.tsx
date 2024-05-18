@@ -31,7 +31,7 @@ import { CardContent, Card } from "@/components/ui/card"
 
 export function CourseOverview() {
   return (
-    <div className="container mx-auto px-4 py-8 md:px-6 md:py-12">
+    <div className="container mx-auto px-4 py-8 md:px-6 md:py-12 overflow-y-scroll">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Available Courses</h1>
         <div className="flex items-center space-x-4">
@@ -74,7 +74,7 @@ export function CourseOverview() {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card href="/courses/1">
           <CardContent className="p-4">
             <h3 className="text-lg font-semibold mb-2">Introduction to Computer Science</h3>
             <p className="text-gray-500 dark:text-gray-400 mb-4">

@@ -19,101 +19,14 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu"
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 
 export function Dashboard() {
   return (
-    <div className="flex min-h-screen w-full">
-      <div className="hidden w-64 shrink-0 border-r bg-gray-100 dark:border-gray-800 dark:bg-gray-900 md:block">
-        <div className="flex h-full flex-col justify-between py-6">
-          <div className="space-y-6 px-4">
-            <Link className="flex items-center gap-2 font-bold" href="#">
-              <BookIcon className="h-6 w-6" />
-              <span>AI Learning</span>
-            </Link>
-            <nav className="space-y-1">
-            <Link
-                className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
-                href="/chat"
-              >
-                <ChatIcon className="h-5 w-5" />
-                Chat
-              </Link>
-              <Link
-                className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
-                href="/courses"
-              >
-                <BookOpenIcon className="h-5 w-5" />
-                Courses
-              </Link>
-              <Link
-                className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
-                href="#"
-              >
-                <ActivityIcon className="h-5 w-5" />
-                Progress
-              </Link>
-              <Link
-                className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
-                href="#"
-              >
-                <SettingsIcon className="h-5 w-5" />
-                Settings
-              </Link>
-            </nav>
-          </div>
-          <div className="px-4">
-            <Button className="w-full" variant="outline">
-              Upgrade to Pro
-            </Button>
-          </div>
-        </div>
-      </div>
+    <div className="flex h-full w-full">
+      
       <div className="flex flex-1 flex-col">
-        <header className="flex h-16 items-center justify-between border-b bg-white px-4 dark:border-gray-800 dark:bg-gray-900 md:px-6">
-          <div className="flex items-center gap-4">
-            <Button className="md:hidden" size="icon" variant="ghost">
-              <MenuIcon className="h-6 w-6" />
-            </Button>
-            <form>
-              <div className="relative">
-                <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                <Input
-                  className="w-full rounded-md bg-gray-100 px-8 py-2 text-sm focus:bg-white dark:bg-gray-800 dark:focus:bg-gray-900"
-                  placeholder="Search courses..."
-                  type="search"
-                />
-              </div>
-            </form>
-          </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="rounded-full" size="icon" variant="ghost">
-                <img
-                  alt="Avatar"
-                  className="rounded-full"
-                  height="32"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "32/32",
-                    objectFit: "cover",
-                  }}
-                  width="32"
-                />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>John Doe</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </header>
+        
         <main className="flex-1 bg-gray-100 dark:bg-gray-900 p-4 md:p-6">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
@@ -122,7 +35,7 @@ export function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="grid gap-4">
-                  <div className="flex items-center gap-4">
+                  <Link className="flex items-center gap-4" href="/courses/1">
                     <img
                       alt="Course Thumbnail"
                       className="rounded-md"
@@ -144,7 +57,7 @@ export function Dashboard() {
                         <span className="text-sm text-gray-500 dark:text-gray-400">67%</span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="flex items-center gap-4">
                     <img
                       alt="Course Thumbnail"
@@ -236,6 +149,116 @@ export function Dashboard() {
                       <Button className="mt-2" size="sm">
                         Enroll
                       </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Kartenstapel</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-4">
+                  <Link className="flex items-center gap-4" href="/courses/1">
+                    <img
+                      alt="Course Thumbnail"
+                      className="rounded-md"
+                      height="64"
+                      src="/placeholder.svg"
+                      style={{
+                        aspectRatio: "64/64",
+                        objectFit: "cover",
+                      }}
+                      width="64"
+                    />
+                    <div>
+                      <h3 className="text-lg font-medium">Introduction to AI</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Beginner</p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-800">
+                          <div className="h-full w-2/3 rounded-full bg-blue-500" />
+                        </div>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">67%</span>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="flex items-center gap-4">
+                    <img
+                      alt="Course Thumbnail"
+                      className="rounded-md"
+                      height="64"
+                      src="/placeholder.svg"
+                      style={{
+                        aspectRatio: "64/64",
+                        objectFit: "cover",
+                      }}
+                      width="64"
+                    />
+                    <div>
+                      <h3 className="text-lg font-medium">Machine Learning</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Intermediate</p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-800">
+                          <div className="h-full w-1/2 rounded-full bg-blue-500" />
+                        </div>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">50%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Quizze</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-4">
+                  <Link className="flex items-center gap-4" href="/courses/1">
+                    <img
+                      alt="Course Thumbnail"
+                      className="rounded-md"
+                      height="64"
+                      src="/placeholder.svg"
+                      style={{
+                        aspectRatio: "64/64",
+                        objectFit: "cover",
+                      }}
+                      width="64"
+                    />
+                    <div>
+                      <h3 className="text-lg font-medium">Introduction to AI</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Beginner</p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-800">
+                          <div className="h-full w-2/3 rounded-full bg-blue-500" />
+                        </div>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">67%</span>
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="flex items-center gap-4">
+                    <img
+                      alt="Course Thumbnail"
+                      className="rounded-md"
+                      height="64"
+                      src="/placeholder.svg"
+                      style={{
+                        aspectRatio: "64/64",
+                        objectFit: "cover",
+                      }}
+                      width="64"
+                    />
+                    <div>
+                      <h3 className="text-lg font-medium">Machine Learning</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Intermediate</p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-800">
+                          <div className="h-full w-1/2 rounded-full bg-blue-500" />
+                        </div>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">50%</span>
+                      </div>
                     </div>
                   </div>
                 </div>
