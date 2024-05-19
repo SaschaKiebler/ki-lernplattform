@@ -1,4 +1,3 @@
-import { CourseCatalog } from "@/components/course-catalog";
 import { CourseOverview } from "@/components/course-overview";
 
 
