@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.1.0",
     "@langchain/openai": "^0.0.32",
     "@prisma/client": "^5.14.0",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -22,9 +23,13 @@
     "ai": "^3.1.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "install": "^0.13.0",
     "langchain": "^0.2.0",
+    "langsmith": "^0.1.25",
     "lucide-react": "^0.378.0",
     "next": "14.2.3",
+    "next-auth": "^5.0.0-beta.18",
+    "npm": "^10.8.0",
     "react": "^18",
     "react-dom": "^18",
     "react-toastify": "^10.0.5",

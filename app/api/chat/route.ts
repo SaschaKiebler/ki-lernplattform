@@ -6,6 +6,8 @@ import {
 import { ChatOpenAI } from '@langchain/openai';
 import { PromptTemplate } from '@langchain/core/prompts';
 import { HttpResponseOutputParser } from 'langchain/output_parsers';
+import { traceable } from "langsmith/traceable";
+import { wrapOpenAI } from "langsmith/wrappers";
 
 export const dynamic = 'force-dynamic'
 
@@ -39,7 +41,7 @@ export async function POST(req: Request) {
 
         const model = new ChatOpenAI({
             apiKey: process.env.OPENAI_API_KEY!,
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4o',
             temperature: 0.8,
             verbose: true,
         });
@@ -51,6 +53,7 @@ export async function POST(req: Request) {
         const parser = new HttpResponseOutputParser();
 
         const chain = prompt.pipe(model).pipe(parser);
+
 
         // Convert the response into a friendly text-stream
         const stream = await chain.stream({
