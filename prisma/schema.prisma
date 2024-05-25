@@ -89,8 +89,8 @@ model Authenticator {
 
 model Course {
   id          String    @id @default(cuid())
-  author      User      @relation(fields: [authorId], references: [id])
-  authorId    String
+  author      User?      @relation(fields: [authorId], references: [id])
+  authorId    String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   name        String

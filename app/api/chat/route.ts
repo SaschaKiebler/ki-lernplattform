@@ -6,8 +6,13 @@ import {
 import { ChatOpenAI } from '@langchain/openai';
 import { PromptTemplate } from '@langchain/core/prompts';
 import { HttpResponseOutputParser } from 'langchain/output_parsers';
-import { traceable } from "langsmith/traceable";
-import { wrapOpenAI } from "langsmith/wrappers";
+import { generateVectorDB } from '@/lib/langchain/vectordb';
+import { Document } from "langchain/document";
+
+import { createRetrievalChain } from "langchain/chains/retrieval";
+import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
+import { RunnableSequence } from "@langchain/core/runnables";
+
 
 export const dynamic = 'force-dynamic'
 
@@ -52,9 +57,20 @@ export async function POST(req: Request) {
        */
         const parser = new HttpResponseOutputParser();
 
-        const chain = prompt.pipe(model).pipe(parser);
+        const chain = RunnableSequence.from([prompt, model, parser]);
+/*
+        const testDoc:Document = new Document({pageContent: "hello Word"});
 
+        const vectorStore = await generateVectorDB();
+        await vectorStore.addDocuments([testDoc]);
 
+        const retriever = await vectorStore.asRetriever();
+        const combineDocsChain = await createStuffDocumentsChain();
+
+        const retrievalChain = await createRetrievalChain(retriever);
+
+        const docs = await retriever.getRelevantDocuments("hello");
+*/
         // Convert the response into a friendly text-stream
         const stream = await chain.stream({
             chat_history: formattedPreviousMessages.join('\n'),
