@@ -5,8 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { auth } from "@/auth";
-import { SignIn } from "@/components/sign-in";
+  import { auth } from "@/auth";
+import { SignIn } from "@/components/auth/signin-button";
+import { SignOut } from "@/components/auth/signout-button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
+  console.log(session?.user);
+
   return (
     <html lang="en" className="h-full">
       <body className={`h-full ${inter.className}`}>
@@ -87,7 +90,7 @@ export default async function RootLayout({
                   </div>
                 </form>
               </div>
-              {!session?.user ? (
+              {session?.user?.name ? (
                 <SignIn />
               ) : (
                 <DropdownMenu>
@@ -112,7 +115,7 @@ export default async function RootLayout({
                     <DropdownMenuItem>Profile</DropdownMenuItem>
                     <DropdownMenuItem>Settings</DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                    <DropdownMenuItem><SignOut/></DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               )}
