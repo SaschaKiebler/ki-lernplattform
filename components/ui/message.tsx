@@ -1,11 +1,15 @@
 import React, { ReactNode } from 'react';
+import { marked } from 'marked';
+import parse from 'html-react-parser';
+
 
 type MessageProps = {
-  children: ReactNode;
+  children?: ReactNode;
   isUser: boolean;
+  message: string;
 };
 
-export default function Message({ children, isUser }: MessageProps) {
+export default function Message({ children, isUser, message }: MessageProps) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
@@ -16,6 +20,8 @@ export default function Message({ children, isUser }: MessageProps) {
         }`}
       >
         {children}
+        {//@ts-ignore
+        parse(marked.parse(message))}
       </div>
     </div>
   );

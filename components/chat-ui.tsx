@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import Message from "./ui/message";
 
 import { useChat } from "ai/react"
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 
 export function ChatUI() {
   const [key, setKey] = useState(0);
@@ -57,21 +58,35 @@ function ChatWindow() {
     }
   });
 
+  const messagesEndRef = useRef(null);
+
+  // Function to scroll to the bottom
+  const scrollToBottom = () => {
+    // @ts-ignore
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Scroll to the bottom whenever messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <>
       <main className="flex-1 overflow-auto p-4">
         <div className="space-y-4">
-          <Message isUser={false}>Hi! Wie kann ich dir Heute helfen?</Message>
+          <Message isUser={false} message="Hi! Wie kann ich dir Heute helfen?"></Message>
           
           {messages.map((m, index) => (
             <div key={index}>
               {m.role === 'user' ? (
-                <Message key={m.id} isUser={true}>{m.content}</Message>
+                <Message key={m.id} isUser={true} message={m.content}></Message>
               ) : (
-                <Message key={m.id} isUser={false}>{m.content}</Message>
+                <Message key={m.id} isUser={false} message={m.content}></Message>
               )}
             </div>
           ))}
+          <div ref={messagesEndRef} />
         </div>
       </main>
       <div className="flex items-center justify-center bg-gray-100 px-4 py-3 dark:bg-gray-800">

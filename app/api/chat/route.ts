@@ -50,27 +50,21 @@ export async function POST(req: Request) {
             temperature: 0.8,
             verbose: true,
         });
+/*
+        const model = new ChatOpenAI({
+            temperature: 0.8,
+            timeout: 10000,
+            verbose: true,
+            model:"lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF",
+            configuration: {
+                baseURL:'https://cp0pqw56-1234.euw.devtunnels.ms/v1/'
+            }
+        });*/
 
-        /**
-       * Chat models stream message chunks rather than bytes, so this
-       * output parser handles serialization and encoding.
-       */
         const parser = new HttpResponseOutputParser();
 
         const chain = RunnableSequence.from([prompt, model, parser]);
-/*
-        const testDoc:Document = new Document({pageContent: "hello Word"});
 
-        const vectorStore = await generateVectorDB();
-        await vectorStore.addDocuments([testDoc]);
-
-        const retriever = await vectorStore.asRetriever();
-        const combineDocsChain = await createStuffDocumentsChain();
-
-        const retrievalChain = await createRetrievalChain(retriever);
-
-        const docs = await retriever.getRelevantDocuments("hello");
-*/
         // Convert the response into a friendly text-stream
         const stream = await chain.stream({
             chat_history: formattedPreviousMessages.join('\n'),

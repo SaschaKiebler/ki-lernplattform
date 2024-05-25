@@ -215,6 +215,6 @@ function formatDate(dateString:string) {
     timeZone: 'UTC',
     timeZoneName: 'short'
   };
-
+  // @ts-ignore
   return new Intl.DateTimeFormat('de-DE', options).format(date);
 }
