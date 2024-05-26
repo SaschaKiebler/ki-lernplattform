@@ -8,7 +8,7 @@ import Link from "next/link"
 
 export async function CourseOverview() {
 
-  const  data  = await getData();
+  const data  = await getData();
 
   return (
     <div className="container mx-auto px-4 py-8 md:px-6 md:py-12 overflow-y-scroll">
@@ -190,7 +190,7 @@ function PlusIcon(props:any) {
 
 
 async function getData() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000'; // Adjust the default URL as needed
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
   const res = await fetch(`${baseUrl}/api/courses/all`,{ cache: 'no-store' })
     .then(response => response.json())
     .then(data => {
