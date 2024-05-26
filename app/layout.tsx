@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import UserMenu from "@/components/auth/user-menu";
   import { auth } from "@/auth";
 import { SignIn } from "@/components/auth/signin-button";
 import { SignOut } from "@/components/auth/signout-button";
@@ -21,6 +22,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   const session = await auth();
   console.log(session?.user);
 
@@ -90,7 +92,7 @@ export default async function RootLayout({
                   </div>
                 </form>
               </div>
-              {session?.user?.name ? (
+              {!session?.user ? (
                 <SignIn />
               ) : (
                 <DropdownMenu>
@@ -110,10 +112,10 @@ export default async function RootLayout({
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>John Doe</DropdownMenuLabel>
+                    <DropdownMenuLabel>{session.user.name}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                    <DropdownMenuItem><Link href={"/settings"}>Profile</Link></DropdownMenuItem>
+                    <DropdownMenuItem><Link href={"/settings"}>Settings</Link></DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem><SignOut/></DropdownMenuItem>
                   </DropdownMenuContent>

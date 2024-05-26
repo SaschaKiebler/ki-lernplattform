@@ -17,7 +17,6 @@ async function getUser(email:string) {
 // Main NextAuth configuration
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
       async authorize(credentials) {
@@ -38,10 +37,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           }
 
           // Compare provided password with stored password
+          // @ts-ignore
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (passwordsMatch) {
             console.log("User authorized successfully");
-            return user;
+            return {userId: user.id, name: user.name, email: user.email};
           } else {
             console.log("Password does not match");
           }
@@ -53,6 +53,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     })
   ],
+  secret: process.env.AUTH_SECRET,
   pages: {
     signIn: '/auth/login',
     signOut: '/auth/signout',
