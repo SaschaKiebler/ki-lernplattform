@@ -9,14 +9,14 @@ export default function LoginForm() {
     return (
         <div className="flex justify-center items-center h-full">
             <div className="w-full max-w-md p-4 space-y-4 bg-white rounded-lg shadow-md">
-                <h1 className="text-2xl font-semibold text-center">Login</h1>
+                <h1 className="text-2xl font-semibold text-center text-black">Login</h1>
                 <form action={dispach} className="space-y-4">
                     <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">Email</label>
+                        <label htmlFor="email" className="text-sm font-medium text-black">Email</label>
                         <input type="email" id="email" name="email" className="w-full p-2 border border-gray-300 rounded-md" />
                     </div>
                     <div className="space-y-2">
-                        <label htmlFor="password" className="text-sm font-medium">Password</label>
+                        <label htmlFor="password" className="text-sm font-medium text-black">Password</label>
                         <input type="password" id="password" name="password" className="w-full p-2 border border-gray-300 rounded-md" />
                     </div>
                     <LoginButton />

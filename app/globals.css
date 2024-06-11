@@ -40,3 +40,9 @@ body {
 #__next {
   height: 100%;
 }
+
+code {
+  font-family: 'Fira Code', monospace;
+  background: #171717;
+  color: #f8f8f2;
+}

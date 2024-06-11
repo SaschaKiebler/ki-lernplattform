@@ -1,10 +1,10 @@
-import { CourseDetailPage } from "@/components/course-detail-page";
+import { CourseDetail } from "@/components/course-detail";
 
 
 
-export default function CourseDetail(){
+export default function CourseDetailPage(){
 
     return (
-        <CourseDetailPage/>
+        <CourseDetail/>
     );
 }

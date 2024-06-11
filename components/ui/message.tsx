@@ -1,15 +1,21 @@
 import React, { ReactNode } from 'react';
 import { marked } from 'marked';
 import parse from 'html-react-parser';
-
+import DOMPurify from 'dompurify';
 
 type MessageProps = {
   children?: ReactNode;
   isUser: boolean;
-  message: string;
+  message?: string;
 };
 
 export default function Message({ children, isUser, message }: MessageProps) {
+  const createMarkup = (html: string) => {
+    return {
+      __html: DOMPurify.sanitize(html),
+    };
+  };
+
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
@@ -20,8 +26,7 @@ export default function Message({ children, isUser, message }: MessageProps) {
         }`}
       >
         {children}
-        {//@ts-ignore
-        parse(marked.parse(message))}
+        {message && parse(marked.parse(DOMPurify.sanitize(message)))}
       </div>
     </div>
   );
