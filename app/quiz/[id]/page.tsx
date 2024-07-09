@@ -1,8 +1,11 @@
 import { QuizQuestionCard } from "@/components/quiz-question-card";
 
+export default function QuizPage({ params }: { params: { id: string } }){
 
-export default function QuizPage(){
-    return (
-        <QuizQuestionCard/>
-    )
+    const { id } = params
+
+        return (
+            <QuizQuestionCard quizID={id?.toString() ?? ''} />
+        )
+    
 }
