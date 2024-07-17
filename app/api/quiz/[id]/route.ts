@@ -2,10 +2,14 @@ import { prisma } from '@/lib/prisma';
 
 
 
-export async function GET() {
+export async function GET({ params }: { params: { id: string } }) {
+    const quizId = params.id;
     const quiz = await prisma.quiz.findFirst({
         include: {
             questions: true,
+        },
+        where: {
+            id: quizId,
         },
     });
     if (!quiz) {
