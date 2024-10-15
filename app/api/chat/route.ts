@@ -75,7 +75,7 @@ export async function POST(req: Request) {
         return new StreamingTextResponse(
             stream.pipeThrough(createStreamDataTransformer()),
         );
-    } catch (e: any) {
+    } catch (e: Error | any) {
         return Response.json({ error: e.message }, { status: e.status ?? 500 });
     }
 }

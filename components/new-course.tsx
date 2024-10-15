@@ -66,6 +66,7 @@ export function NewCourse() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        window.location.href = "/courses";
       })
       .catch(error => {
         console.error("Error:", error);

@@ -60,11 +60,10 @@ function ChatWindow() {
     }
   });
 
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Function to scroll to the bottom
   const scrollToBottom = () => {
-    // @ts-ignore
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
